@@ -30,4 +30,6 @@ const futureTestList = [
     problem : '[알고리즘 1분반] 정렬',
     testCode : '비공개'
   },
-]
+];
+
+export default futureTestList;
