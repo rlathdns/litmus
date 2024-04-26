@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function TopNavbar() {
   return (
-    <Navbar expand="sm" className='bg-body-tertiary' fixed='top'>
+    <Navbar expand="sm" className='bg-body-tertiary'>
       <Container className={classes.container}>
         <Navbar.Brand>Litmus</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -15,7 +15,7 @@ function TopNavbar() {
             <Nav.Link>마이페이지</Nav.Link>
             <Nav.Link>시험목록</Nav.Link>
             <Nav.Link>도움말</Nav.Link>
-            {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+            <NavDropdown title="내 정보" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
@@ -25,7 +25,7 @@ function TopNavbar() {
               <NavDropdown.Item href="#action/3.4">
                 Separated link
               </NavDropdown.Item>
-            </NavDropdown> */}
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
