@@ -1,8 +1,13 @@
-import TestList from "../components/Main/TestList";
+import TestList from "../components/Main/TestList/TestList";
+import TestAmounts from "../components/Main/testAmounts/TestAmounts";
 
 function HomePage(){
   return (
-    <TestList/>
+    <div>
+      <TestAmounts/>
+      <TestList/>
+    </div>
+    
   )
 }
 

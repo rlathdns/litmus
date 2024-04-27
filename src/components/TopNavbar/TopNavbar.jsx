@@ -10,6 +10,9 @@ import { useState } from 'react';
 
 function TopNavbar() {
   const [isServerOnline, setIsServerOnline] = useState(true);
+  const toggleServer = () => {
+    setIsServerOnline(!isServerOnline);
+  }
 
   return (
     <Navbar expand="sm" className='bg-body-tertiary'>
@@ -32,10 +35,9 @@ function TopNavbar() {
           </Nav>
         </Navbar.Collapse>
       </Container>
-      <Stack direction="horizontal" gap={2}>
-        <h8>Server Status : </h8>
-        <Badge bg="success">On</Badge>
-        <Badge bg="secondary">Off</Badge>
+      <Stack direction="horizontal" gap={2} onClick={toggleServer}>
+        <h7>Server Status : </h7>
+        {isServerOnline ? <Badge bg="success">On</Badge> : <Badge bg="secondary">Off</Badge>}
       </Stack>
     </Navbar>
   );

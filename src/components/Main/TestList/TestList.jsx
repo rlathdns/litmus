@@ -1,8 +1,8 @@
 import Table from 'react-bootstrap/Table';
 import { useState, useEffect } from 'react';
-import currentTestList from '../../mocks/TestList/currentTestList';
-import futureTestList from '../../mocks/TestList/futureTestList';
-import pastTestList from '../../mocks/TestList/pastTestList';
+import currentTestList from '../../../mocks/TestList/currentTestList';
+import futureTestList from '../../../mocks/TestList/futureTestList';
+import pastTestList from '../../../mocks/TestList/pastTestList';
 import classes from './TestList.module.css';
 
 function TestList(){
