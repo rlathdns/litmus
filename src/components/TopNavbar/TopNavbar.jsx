@@ -4,7 +4,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import Badge from 'react-bootstrap/Badge';
+import Stack from 'react-bootstrap/Stack';
+import { useState } from 'react';
+
 function TopNavbar() {
+  const [isServerOnline, setIsServerOnline] = useState(true);
+
   return (
     <Navbar expand="sm" className='bg-body-tertiary'>
       <Container className={classes.container}>
@@ -12,25 +18,29 @@ function TopNavbar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={classes.navbar_content}>
-            <Nav.Link>마이페이지</Nav.Link>
             <Nav.Link>시험목록</Nav.Link>
+            <Nav.Link>게시판</Nav.Link>
             <Nav.Link>도움말</Nav.Link>
             <NavDropdown title="내 정보" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item>마이페이지</NavDropdown.Item>
+              <NavDropdown.Item>내 제출</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">
-                Separated link
+                로그아웃
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Stack direction="horizontal" gap={2}>
+        <h8>Server Status : </h8>
+        <Badge bg="success">On</Badge>
+        <Badge bg="secondary">Off</Badge>
+      </Stack>
     </Navbar>
   );
+
+  
 }
 
 export default TopNavbar;

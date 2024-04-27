@@ -1,3 +1,21 @@
 .footer{
   margin-top: 200px;
+  background-color: #a8e0ff;
+  color: #000000A6;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  vertical-align: center;
+  padding: 30px;
+}
+
+.logoBox{
+  display: flex;
+  margin: 0;
+}
+
+.jbnu_logo{
+  width: 180px;
+  height: 60px;
 }

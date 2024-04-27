@@ -28,17 +28,14 @@ function TestList(){
 
   const emphasizeTime = (currentItemIndex) => {
     if (currentItemIndex < 2) {
-      console.log(1);
       return '';
     }
   
     if (currentItemIndex === 2 || currentItemIndex === 3) {
-      console.log(3);
       return `${classes.emphasize}`;
     }
   
     if (currentItemIndex === 4) {
-      console.log(5);
       return `${classes.more_emphasize}`;
     }
   }
@@ -68,14 +65,14 @@ function TestList(){
           <button 
             className={classes.title_button}
             onClick={indexDown}
-          >{`<`}</button>
+          >prev</button>
 
           <h2 className={classes.title_content}>{title}</h2>
 
           <button 
             className={classes.title_button}
             onClick={indexUp}
-          >{`>`}</button>
+          >next</button>
         </div>
         <Table striped bordered hover>       
           <thead className={classes.table_head}>
