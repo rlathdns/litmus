@@ -15,7 +15,7 @@ function TopNavbar() {
   }
 
   return (
-    <Navbar expand="sm" className='bg-body-tertiary'>
+    <Navbar expand="lg" className='bg-body-tertiary'>
       <Container className={classes.container}>
         <Navbar.Brand>Litmus</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
@@ -36,7 +36,7 @@ function TopNavbar() {
         </Navbar.Collapse>
       </Container>
       <Stack direction="horizontal" gap={2} onClick={toggleServer}>
-        <h7>Server Status : </h7>
+        <span>Server Status : </span>
         {isServerOnline ? <Badge bg="success">On</Badge> : <Badge bg="secondary">Off</Badge>}
       </Stack>
     </Navbar>
