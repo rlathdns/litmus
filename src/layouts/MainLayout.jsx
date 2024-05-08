@@ -14,7 +14,7 @@ function MainLayout(){
       <main className={classes.content}>
         <Outlet/>
       </main>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

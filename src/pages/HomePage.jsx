@@ -9,7 +9,7 @@ function HomePage(){
 			<div style={{height : '300px'}}>
 
 			</div>
-      <TestList/>
+      {/* <TestList/> */}
 			<WarningModal/>
     </div>
     
