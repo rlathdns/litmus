@@ -74,7 +74,7 @@ function TestList(){
             onClick={indexUp}
           >next</button>
         </div>
-        <Table striped bordered hover>       
+        <Table bordered hover>       
           <thead className={classes.table_head}>
             <tr>
               <th>종료 시간</th>

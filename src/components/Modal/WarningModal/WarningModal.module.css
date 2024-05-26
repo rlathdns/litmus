@@ -1,0 +1,17 @@
+.right_align {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.checkbox_right {
+  margin-left: auto;
+}
+
+.modal_body{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}

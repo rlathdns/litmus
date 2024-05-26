@@ -1,0 +1,23 @@
+.container{
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.table_element, .table_element th, .table_element td {
+	padding: 10px;
+	text-align: center;
+}
+
+.emphasize{
+	color: #DC3545;
+}
+
+.bigTitle{
+
+}
+
+
+

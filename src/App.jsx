@@ -1,10 +1,10 @@
-import { useState } from 'react'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
-import TopNavbar from './components/TopNavbar/TopNavbar'
 import MainLayout from './layouts/MainLayout';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import MyTestPage from './pages/MyTestPage';
 
 
 const router = createBrowserRouter([
@@ -15,6 +15,10 @@ const router = createBrowserRouter([
 			{
 				index: true,
 				element : <HomePage/>
+			},
+			{
+				path : 'myTest',
+				element : <MyTestPage/>
 			}
 		]
 	},

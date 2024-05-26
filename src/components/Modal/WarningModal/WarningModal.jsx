@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Form from 'react-bootstrap/Form'; 
+import classes from './WarningModal.module.css';
+import ThisWeekExam from './ThisWeekExam/ThisWeekExam';
+import TodayExam from './TodayExam/TodayExam';
+import Divider from '../../Divider/Divider';
 
 function WarningModal(){
 	const [show, setShow] = useState(true);
@@ -14,12 +18,20 @@ function WarningModal(){
         <Modal.Header closeButton>
           <Modal.Title>응시기간에 유의하세요!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-					<div style={{height: '300px'}}>
+        <Modal.Body className={classes.modal_body}>
+					<TodayExam/>
 
-					</div>
+					<Divider/>
+
+					<ThisWeekExam/>
+					
 				</Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className={classes.right_align}>
+					<Form.Check
+						type="checkbox"
+						label="다시보지 않기"
+						className={classes.checkbox_right}
+					/>
         </Modal.Footer>
       </Modal>
     </>

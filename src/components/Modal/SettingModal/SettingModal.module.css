@@ -1,0 +1,56 @@
+.modal_body {
+  padding: 20px;
+}
+
+.form_group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+	padding: 10px;
+  border-radius: 4px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.label{
+	margin: 10px 20px;
+	
+}
+
+.custom_select {
+	width: 100px;
+  height: 38px;
+  background: white;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 6px 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" stroke="%23aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path d="M1 1l4 4 4-4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+	cursor: pointer;
+}
+
+.custom_select:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.custom_select:hover{
+	border-color: #80bdff;
+}
+
+.switch_checked .form-check-input:checked {
+  background-color: #28a745 !important; /* 활성화된 토글의 색을 초록색으로 변경 */
+  border-color: #28a745 !important;
+}
+
+.right_align {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

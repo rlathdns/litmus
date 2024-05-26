@@ -1,17 +1,13 @@
 import TestList from "../components/Main/TestList/TestList";
-import TestAmounts from "../components/Main/testAmounts/TestAmounts";
-import WarningModal from "../components/Modal/WarningModal";
+import WarningModal from "../components/Modal/WarningModal/WarningModal";
 
 function HomePage(){
   return (
-    <div>
-      {/* <TestAmounts/> */}
-			<div style={{height : '300px'}}>
+    <>
 
-			</div>
-      {/* <TestList/> */}
+      <TestList/>
 			<WarningModal/>
-    </div>
+    </>
     
   )
 }
