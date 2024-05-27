@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 function TodayExam() {
   return (
 		<div className={classes.container}>
-			<h3 className={classes.bigTitle}>이번주에 종료되는 시험</h3>
+			<h3 className={classes.bigTitle}>오늘 종료되는 시험</h3>
 			<Table bordered size="sm" className={classes.table_element}>
 				<thead>
 					<tr>

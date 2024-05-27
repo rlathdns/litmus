@@ -3,9 +3,11 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
 import classes from './MyTestList.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const MyTestList = () => {
   const [expandedRows, setExpandedRows] = useState([]);
+	const navigate = useNavigate();
 
   const toggleRow = (rowIndex) => {
     if (expandedRows.includes(rowIndex)) {
@@ -40,7 +42,7 @@ const MyTestList = () => {
           <React.Fragment key={test.id}>
             <tr>
               <td>{test.id}</td>
-              <td>{test.title}</td>
+              <td onClick={()=>{navigate('/solving')}}>{test.title}</td>
               <td className={test.result === '성공' ? classes.success : classes.fail}>{test.result}</td>
               <td>{test.accuracy}</td>
               <td>

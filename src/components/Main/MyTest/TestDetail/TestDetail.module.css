@@ -1,0 +1,79 @@
+.header {
+  background-color: #f4f4f4;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 50px); /* Subtract header height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.leftPanel, .rightPanel {
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%;
+}
+
+.leftPanel {
+  margin-left: 10px;
+}
+
+.codeEditor, .resultPanel {
+  padding: 10px;
+  font-family: monospace;
+  overflow: auto; /* Allow scrolling inside panels */
+}
+
+.codeEditor {
+  height: calc(50% - 40px); /* Adjust height for titles and button group */
+  border-bottom: 1px solid #ccc;
+}
+
+.resultPanel {
+  height: calc(50% - 40px); /* Adjust height for titles and button group */
+}
+
+.rightPanel {
+  position: relative;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
+.buttonGroup button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.gutter {
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+  cursor: col-resize;
+  width: 10px;
+}
+
+.gutter.gutter-vertical {
+  cursor: row-resize;
+  height: 10px;
+}
+
+.panelTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
