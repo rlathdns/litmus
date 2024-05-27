@@ -28,7 +28,7 @@ function TopNavbar() {
     <>
       <Navbar expand="lg" className='bg-body-tertiary'>
         <Container className={classes.container}>
-          <Navbar.Brand>Litmus</Navbar.Brand>
+          <Navbar.Brand href='/'>Litmus</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={classes.navbar_content}>

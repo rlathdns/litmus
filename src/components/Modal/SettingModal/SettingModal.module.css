@@ -14,7 +14,6 @@
 
 .label{
 	margin: 10px 20px;
-	
 }
 
 .custom_select {
@@ -27,7 +26,6 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" stroke="%23aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path d="M1 1l4 4 4-4"/></svg>');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 12px;

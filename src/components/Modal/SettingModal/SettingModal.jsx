@@ -7,7 +7,7 @@ import Divider from '../../Divider/Divider';
 
 function SettingModal({ show, handleClose }){
   const [darkMode, setDarkMode] = useState(false);
-  const [colorBlindMode, setColorBlindMode] = useState(true);
+  const [colorBlindMode, setColorBlindMode] = useState(false);
   const [language, setLanguage] = useState('한국어');
 
   return (

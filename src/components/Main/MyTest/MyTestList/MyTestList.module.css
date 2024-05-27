@@ -1,0 +1,41 @@
+.table {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.toggleButton {
+  padding: 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.toggleButton:focus {
+  outline: none;
+}
+
+.expandedRow {
+  padding: 0 !important;
+}
+
+.innerTable {
+  margin: 0;
+  width: 100%;
+}
+
+.success {
+  background-color: #d4edda !important; /* 초록색 배경 */
+  color: #155724; /* 초록색 글자 */
+}
+
+.fail {
+  background-color: #f8d7da !important; /* 빨간색 배경 */
+  color: #721c24; /* 빨간색 글자 */
+}
