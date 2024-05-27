@@ -32,7 +32,7 @@ function TopNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={classes.navbar_content}>
-              <Nav.Link>시험목록</Nav.Link>
+              <Nav.Link href='/myTest'>시험목록</Nav.Link>
               <Nav.Link>게시판</Nav.Link>
               <Nav.Link>도움말</Nav.Link>
               <NavDropdown title="내 정보" id="basic-nav-dropdown">
