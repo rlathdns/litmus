@@ -1,20 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleDarkMode } from '../../../store/darkModeSlice'; // 경로를 맞춰주세요
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button';
 import classes from './SettingModal.module.css';
-import Divider from '../../Divider/Divider';
+import closeIcon from '../../../assets/closeIcon.svg';
 
-function SettingModal({ show, handleClose }){
-  const [darkMode, setDarkMode] = useState(false);
+function SettingModal({ show, handleClose }) {
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
+  const [localDarkMode, setLocalDarkMode] = useState(isDarkMode);
   const [colorBlindMode, setColorBlindMode] = useState(false);
   const [language, setLanguage] = useState('한국어');
 
+  useEffect(() => {
+    // 모달이 열릴 때 로컬 상태를 Redux 상태로 초기화
+    setLocalDarkMode(isDarkMode);
+  }, [show, isDarkMode]);
+
+  const handleApply = () => {
+    if (localDarkMode !== isDarkMode) {
+      dispatch(toggleDarkMode());
+    }
+    handleClose();
+  };
+
+  const handleModalClose = () => {
+    setLocalDarkMode(isDarkMode); // 모달이 닫힐 때 로컬 상태를 Redux 상태로 초기화
+    handleClose();
+  };
+
+  useEffect(() => {
+    // 다크 모드 변경 시 클래스 업데이트
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [isDarkMode]);
+
   return (
     <>
-      <Modal show={show} onHide={handleClose} centered>
-        <Modal.Header closeButton>
+      <Modal show={show} onHide={handleModalClose} centered>
+        <Modal.Header className={classes.header}>
           <Modal.Title>설정</Modal.Title>
+          <img onClick={handleModalClose} className={classes.closeIcon} src={closeIcon}/>
         </Modal.Header>
         <Modal.Body className={classes.modal_body}>
           <Form>
@@ -23,10 +54,10 @@ function SettingModal({ show, handleClose }){
               <Form.Check 
                 type="switch"
                 id="dark-mode-switch"
-                label={darkMode ? "ON" : "OFF"}
-                checked={darkMode}
-                onChange={(e) => setDarkMode(e.target.checked)}
-                className={darkMode ? classes.switch_checked : ""}
+                label={localDarkMode ? "ON" : "OFF"}
+                checked={localDarkMode}
+                onChange={(e) => setLocalDarkMode(e.target.checked)}
+                className={localDarkMode ? classes.switch_checked : ""}
               />
             </Form.Group>
            
@@ -57,8 +88,8 @@ function SettingModal({ show, handleClose }){
             </Form.Group>
           </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+        <Modal.Footer className={classes.footer}>
+          <Button variant="primary" onClick={handleApply}>
             적용
           </Button>
         </Modal.Footer>

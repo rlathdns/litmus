@@ -5,7 +5,7 @@ import classes from './WarningModal.module.css';
 import ThisWeekExam from './ThisWeekExam/ThisWeekExam';
 import TodayExam from './TodayExam/TodayExam';
 import Divider from '../../Divider/Divider';
-import CloseButton from '../../CloseButton/CloseButton';
+import closeIcon from '../../../assets/closeIcon.svg';
 
 function WarningModal(){
 	const [show, setShow] = useState(true);
@@ -17,8 +17,8 @@ function WarningModal(){
     <>
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header className={classes.header}>
-          <Modal.Title>응시기간에 유의하세요!</Modal.Title>
-          <CloseButton/>
+          <Modal.Title className={classes.title}>응시기간에 유의하세요!</Modal.Title>
+          <img onClick={handleClose} className={classes.closeIcon} src={closeIcon}/>
         </Modal.Header>
         <Modal.Body className={classes.modal_body}>
 					<TodayExam/>

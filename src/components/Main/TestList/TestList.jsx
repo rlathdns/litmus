@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
 import { useState, useEffect } from 'react';
 import currentTestList from '../../../mocks/TestList/currentTestList';
@@ -6,10 +7,10 @@ import pastTestList from '../../../mocks/TestList/pastTestList';
 import classes from './TestList.module.css';
 
 function TestList(){
-
   const [tabIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
   const [title, setTitle] = useState('');
+  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
 
   const indexUp = () => {
     if(tabIndex === 2){
@@ -21,7 +22,8 @@ function TestList(){
 
   const indexDown = () => {
     if (tabIndex === 0){ 
-      setIndex(2)
+      setIndex(2);
+      return;
     }
     setIndex(tabIndex -1);
   };
@@ -39,7 +41,6 @@ function TestList(){
       return `${classes.more_emphasize}`;
     }
   }
-  
 
   useEffect(() => {
     switch (tabIndex) {
@@ -59,7 +60,7 @@ function TestList(){
   }, [tabIndex]);
 
   return (
-    <section>
+    <section className={isDarkMode ? classes.dark_mode : ''}>
       <article className={classes.wrapper}>
         <div className={classes.title}>
           <button 
@@ -93,7 +94,6 @@ function TestList(){
                 <td>{item.testCode}</td>
               </tr>
             ))}
-            
           </tbody>
         </Table>
       </article>
@@ -102,6 +102,3 @@ function TestList(){
 }
 
 export default TestList;
-
-
-
