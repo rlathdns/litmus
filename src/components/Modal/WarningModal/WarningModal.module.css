@@ -15,3 +15,15 @@
 	justify-content: center;
 	margin: 0;
 }
+
+
+.header{
+	display: flex;
+	position: relative;
+}
+
+.closeButton{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
