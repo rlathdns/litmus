@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
+import upArrow from '../../../../assets/up_arrow.svg'
+import downArrow from '../../../../assets/down_arrow.svg'
 import classes from './MyTestList.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -60,7 +62,7 @@ const MyTestList = () => {
                   onClick={() => toggleRow(index)}
                   className={classes.toggleButton}
                 >
-                  {expandedRows.includes(index) ? <FaAngleUp /> : <FaAngleDown />}
+                  {expandedRows.includes(index) ? <img src={upArrow}/> : <img src={downArrow}/>}
                 </Button>
               </td>
             </tr>

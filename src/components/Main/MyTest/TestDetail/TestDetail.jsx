@@ -83,10 +83,17 @@ const TestDetail = () => {
     document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
   };
 
+  const goBack = () => {
+    window.history.back();
+  };
+
   return (
-    <div>
+    <div className="content">
       <header className='header'>
-        <div>11055번</div>
+        <div>
+          <button className="back-button" onClick={goBack}>&lt;</button>
+          11055번
+        </div>
         <div>제출까지 남은 시간: 01:23:45</div>
         <div>
           <label htmlFor="language">언어 선택 </label>
@@ -155,15 +162,9 @@ const TestDetail = () => {
             </div>
           </div>
           <div className="button-group">
-            <button onClick={resetCode}>초기화
-              {/* <div className="tooltip">코드를 초기화합니다.</div> */}
-            </button>
-            <button onClick={runCode}>코드 실행
-              {/* <div className="tooltip">코드를 실행합니다.</div> */}
-            </button>
-            <button className="submit-button" onClick={submitCode}>제출 후 채점하기
-              {/* <div className="tooltip">코드를 제출하고 채점합니다.</div> */}
-            </button>
+            <button onClick={resetCode}>초기화</button>
+            <button onClick={runCode}>코드 실행</button>
+            <button className="submit-button" onClick={submitCode}>제출 후 채점하기</button>
           </div>
         </div>
       </div>
