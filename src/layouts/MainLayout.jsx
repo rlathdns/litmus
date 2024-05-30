@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import TopNavbar from '../components/TopNavbar/TopNavbar';
 import classes from './MainLayout.module.css';
+import DarkModeContext from './DarkModeContext'; // 새로 생성한 context를 import
 
 function MainLayout() {
   const globalDarkMode = useSelector(state => state.darkMode.isDarkMode);
@@ -14,13 +15,13 @@ function MainLayout() {
   }, [globalDarkMode]);
 
   return (
-    <>
+    <DarkModeContext.Provider value={{ localDarkMode, setLocalDarkMode }}>
       <TopNavbar localDarkMode={localDarkMode} setLocalDarkMode={setLocalDarkMode} />
       <main className={localDarkMode ? `${classes.content} dark-mode` : classes.content}>
         <Outlet />
       </main>
       {/* <Footer/> */}
-    </>
+    </DarkModeContext.Provider>
   );
 }
 

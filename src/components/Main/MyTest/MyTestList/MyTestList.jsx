@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyTestList = () => {
   const [expandedRows, setExpandedRows] = useState([]);
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const toggleRow = (rowIndex) => {
     if (expandedRows.includes(rowIndex)) {
@@ -24,20 +24,19 @@ const MyTestList = () => {
         { id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:15:10' },
       ] },
     { id: 'B', title: '피보나치 항수', result: '실패', accuracy: '58.7%', status: '제출', details: [
-			{ id: '1', category: '오답', source: 'Source', time: '2024-05-07 22:43:10' },
-			{ id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:29:10' },
-			{ id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:21:10' },
-			{ id: '4', category: '오답', source: 'Source', time: '2024-05-07 22:18:10' },
-			{ id: '5', category: '오답', source: 'Source', time: '2024-05-07 22:15:10' },
-			{ id: '6', category: '오답', source: 'Source', time: '2024-05-07 22:12:10' },
-			{ id: '7', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:10:10' },
-			
-		] },
-		{ id: 'C', title: '가장 큰 증가하는 부분 수열', result: '미제출', accuracy: '44.179%', status: '제출', details: []}
-	];
+        { id: '1', category: '오답', source: 'Source', time: '2024-05-07 22:43:10' },
+        { id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:29:10' },
+        { id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:21:10' },
+        { id: '4', category: '오답', source: 'Source', time: '2024-05-07 22:18:10' },
+        { id: '5', category: '오답', source: 'Source', time: '2024-05-07 22:15:10' },
+        { id: '6', category: '오답', source: 'Source', time: '2024-05-07 22:12:10' },
+        { id: '7', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:10:10' },
+      ] },
+    { id: 'C', title: '가장 큰 증가하는 부분 수열', result: '미제출', accuracy: '44.179%', status: '제출', details: [] }
+  ];
 
   return (
-    <Table bordered className={classes.table}>
+    <Table bordered className={classes.table} style={{ borderWidth: '2px' }}>
       <thead>
         <tr>
           <th>문제번호</th>
@@ -53,7 +52,7 @@ const MyTestList = () => {
             <tr>
               <td>{test.id}</td>
               <td><a href='/solving'>{test.title}</a></td>
-              <td className={test.result === '성공' ? classes.success : classes.fail}>{test.result}</td>
+              <td className={test.result === '성공' ? classes.success : test.result === '실패' ? classes.fail : ''}>{test.result}</td>
               <td>{test.accuracy}</td>
               <td>
                 <Button
