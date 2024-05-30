@@ -8,6 +8,7 @@ const TestDetail = () => {
 
   const [showModal, setShowModal] = useState(false);
   const [resultMessage, setResultMessage] = useState('');
+  const [resultClass, setResultClass] = useState('');
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -83,20 +84,22 @@ const TestDetail = () => {
 
   const runCode = () => {
     const code = editorInstance.current.getValue();
+    const resultContent = document.getElementById('result-content');
+
     if (code.trim() === '1234') {
-      document.getElementById('result-content').innerText = 
-        '테스트 1 〉실패\n\n' +
-        '테스트 결과 (~˘▾˘)~\n' +
-        '1개 중 0개 성공\n\n' +
-        '채점 결과\n' +
-        '합계: 0.0 / 100.0\n';  
+      resultContent.innerHTML = 
+        '테스트 1 〉<span class="fail-text">실패</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 0개 성공<br><br>' +
+        '채점 결과<br>' +
+        '합계: 0.0 / 100.0<br>';
     } else {
-      document.getElementById('result-content').innerText = 
-        '테스트 1 〉성공\n\n' +
-        '테스트 결과 (~˘▾˘)~\n' +
-        '1개 중 1개 성공\n\n' +
-        '채점 결과\n' +
-        '합계: 100.0 / 100.0\n';
+      resultContent.innerHTML = 
+        '테스트 1 〉<span class="success-text">성공</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 1개 <span class="success-text">성공</span><br><br>' +
+        '채점 결과<br>' +
+        '합계: 100.0 / 100.0<br>';
     }
   };
 
@@ -185,18 +188,18 @@ const TestDetail = () => {
           </div>
           <div className="result-panel">
             <div className="panel-title">실행 결과</div>
-            <div id="result-content">
+            <div id="result-content" className={resultClass}>
               실행 결과가 여기에 표시됩니다.
             </div>
           </div>
           <div className="button-group">
             <button onClick={resetCode}>초기화</button>
             <button onClick={runCode}>코드 실행</button>
-            <button className="submit-button" onClick={submitCode}>제출 후 채점하기</button>
+            <button onClick={submitCode}>제출</button>
           </div>
         </div>
       </div>
-      {showModal && <ResultModal result={resultMessage} onClose={handleCloseModal} show={showModal} />}
+      <ResultModal show={showModal} handleClose={handleCloseModal} message={resultMessage} />
     </div>
   );
 };

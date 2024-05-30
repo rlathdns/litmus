@@ -168,3 +168,16 @@
 .button-group button:hover .tooltip {
   opacity: 1;
 }
+
+/* 기존 CSS 코드 생략 */
+
+/* 기존 CSS 코드 생략 */
+
+.success-text {
+  color: #0D6EFD;
+  font-weight: bold;
+}
+
+.fail-text{
+	color: #DC3545; /* 빨간색 글자 */;
+}
