@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import MyTestPage from './pages/MyTestPage';
 import TestSolvingPage from './pages/TestSolvingPage';
+import MyTestSubmitPage from './pages/MyTestPageSubmit';
 
 
 const router = createBrowserRouter([
@@ -15,19 +16,24 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element : <HomePage/>
+				element : <HomePage />
 			},
 			{
 				path : 'myTest',
-				element : <MyTestPage/>
+				element : <MyTestPage />
 			},
+			{
+				path : 'myTest/submited',
+				element : <MyTestSubmitPage/>
+			}
 		],
 
 	},
 	{
 		path : 'solving',
-		element : <TestSolvingPage/>
+		element : <TestSolvingPage />
 	}
+
 	
 	
 ]);
