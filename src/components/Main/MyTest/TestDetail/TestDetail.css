@@ -1,0 +1,163 @@
+
+
+.header {
+  background-color: #fff;
+  padding: 10px 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  flex-shrink: 0;
+}
+.main-container {
+  flex: 1;
+  display: flex;
+  height: calc(100vh - 50px); /* Subtract header height */
+  overflow: hidden; /* Prevent scrolling */
+}
+.left-panel, .right-panel {
+  overflow: hidden; /* Prevent scrolling */
+  height: 100%;
+}
+.left-panel {
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling inside left panel */
+}
+.code-editor, #result-content {
+  padding: 15px;
+  font-family: monospace;
+  overflow: auto; /* Allow scrolling inside panels */
+}
+.code-editor {
+  height: calc(50% - 40px); /* Adjust height for titles and button group */
+  border-bottom: 1px solid #ccc;
+}
+.result-panel {
+  height: calc(50% - 40px); /* Adjust height for titles and button group */
+}
+.right-panel {
+  position: relative;
+}
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+.button-group button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  position: relative; /* for tooltip positioning */
+}
+.gutter {
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+.gutter.gutter-horizontal {
+  cursor: col-resize;
+  width: 10px;
+}
+.gutter.gutter-vertical {
+  cursor: row-resize;
+  height: 10px;
+}
+.panel-title {
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.CodeMirror {
+  height: 100% !important; /* Set CodeMirror to fill its container */
+}
+.h1, .h2, .h3 {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.header-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+.stats {
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+.example {
+  margin: 20px 0;
+}
+.example pre {
+  background: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+.example h3 {
+  margin-top: 0;
+}
+.stats-header {
+  border-bottom: 1px solid #e5e7eb;
+}
+.stats-item {
+  width: 80px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+.stats-item strong {
+  border-bottom: 1px solid #ddd;
+}
+
+.h1 {
+  font-size: 24px;
+  font-weight: 500;
+}
+.h2 {
+  font-size: 18px;
+}
+.h3 {
+  font-size: 18px;
+}
+.problem {
+  margin-top: 20px;
+}
+.submit-button {
+  background-color: #3b82f6;
+  color: #fff;
+}
+#language {
+  border-radius: 8px;
+  padding: 5px;
+  border: none;
+  background-color: #e5e7eb;
+  margin-left: 10px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: absolute;
+  top: -30px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none; /* Prevents the tooltip from blocking mouse events */
+}
+.button-group button:hover .tooltip {
+  opacity: 1;
+}

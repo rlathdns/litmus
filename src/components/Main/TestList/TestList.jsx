@@ -67,21 +67,21 @@ function TestList() {
   return (
     <section className={localDarkMode ? `${classes.wrapper} dark-mode` : classes.wrapper}>
       <article className={classes.wrapper}>
-        <div className={localDarkMode ? `${classes.dark_title}` : classes.title}>
+        <div className={localDarkMode ? classes.dark_title : classes.title}>
           <button
-            className={localDarkMode ? `${classes.dark_title_button}` : classes.title_button}
+            className={localDarkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexDown}
           >prev</button>
 
-          <h2 className={localDarkMode ? `${classes.dark_title_content}` : classes.title_content}>{title}</h2>
+          <h2 className={localDarkMode ? classes.dark_title_content : classes.title_content}>{title}</h2>
 
           <button
-            className={localDarkMode ? `${classes.dark_title_button}` : classes.title_button}
+            className={localDarkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexUp}
           >next</button>
         </div>
         <Table bordered hover className={localDarkMode ? 'table-dark' : ''}>
-          <thead className={classes.table_head}>
+          <thead className={localDarkMode ? classes.dark_table_head : classes.table_head}>
             <tr>
               <th>종료 시간</th>
               <th>교수님</th>
@@ -90,7 +90,7 @@ function TestList() {
             </tr>
           </thead>
 
-          <tbody className={classes.table_body}>
+          <tbody className={localDarkMode ? classes.dark_table_body : classes.table_body}>
             {data.map((item, idx) => (
               <tr key={idx}>
                 <td><span className={tabIndex === 0 ? emphasizeTime(idx) : ''}>{item.time}</span></td>

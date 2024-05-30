@@ -1,14 +1,13 @@
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import TestList from "../components/Main/TestList/TestList";
 import WarningModal from "../components/Modal/WarningModal/WarningModal";
-import { useSelector } from "react-redux";
 
-function HomePage() {
+function HomePage({ localDarkMode }) {
   const isNeverSee = useSelector(state => state.neverSee.isNeverSee);
 
   return (
     <>
-      <TestList />
+      <TestList localDarkMode={localDarkMode} />
       {!isNeverSee && <WarningModal />}
     </>
   );

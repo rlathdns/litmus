@@ -23,8 +23,18 @@ const MyTestList = () => {
         { id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:25:10' },
         { id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:15:10' },
       ] },
-    { id: 'B', title: '피보나치 항수', result: '실패', accuracy: '58.7%', status: '제출', details: [] },
-  ];
+    { id: 'B', title: '피보나치 항수', result: '실패', accuracy: '58.7%', status: '제출', details: [
+			{ id: '1', category: '오답', source: 'Source', time: '2024-05-07 22:43:10' },
+			{ id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:29:10' },
+			{ id: '3', category: '오답', source: 'Source', time: '2024-05-07 22:21:10' },
+			{ id: '4', category: '오답', source: 'Source', time: '2024-05-07 22:18:10' },
+			{ id: '5', category: '오답', source: 'Source', time: '2024-05-07 22:15:10' },
+			{ id: '6', category: '오답', source: 'Source', time: '2024-05-07 22:12:10' },
+			{ id: '7', category: '오답', source: 'Source', time: '2024-05-07 22:10:10' },
+			
+		] },
+		{ id: 'C', title: '피보나치 항수', result: '미제출', accuracy: '43.7%', status: '제출', details: []}
+	];
 
   return (
     <Table bordered className={classes.table}>
@@ -42,7 +52,7 @@ const MyTestList = () => {
           <React.Fragment key={test.id}>
             <tr>
               <td>{test.id}</td>
-              <td onClick={()=>{navigate('/solving')}}>{test.title}</td>
+              <td><a href='/solving'>{test.title}</a></td>
               <td className={test.result === '성공' ? classes.success : classes.fail}>{test.result}</td>
               <td>{test.accuracy}</td>
               <td>
@@ -70,9 +80,9 @@ const MyTestList = () => {
                       {test.details.length > 0 ? (
                         test.details.map(detail => (
                           <tr key={detail.id}>
-                            <td className={detail.category === '정답' ? classes.success : detail.category === '오답' ? classes.fail : ''}>{detail.category}</td>
-                            <td className={detail.category === '정답' ? classes.success : detail.category === '오답' ? classes.fail : ''}>{detail.source}</td>
-                            <td className={detail.category === '정답' ? classes.success : detail.category === '오답' ? classes.fail : ''}>{detail.time}</td>
+                            <td className={detail.category === '정답' ? classes.success : classes.fail}>{detail.category}</td>
+                            <td className={detail.category === '정답' ? classes.success : classes.fail}><a>{detail.source}</a></td>
+                            <td className={detail.category === '정답' ? classes.success : classes.fail}>{detail.time}</td>
                           </tr>
                         ))
                       ) : (

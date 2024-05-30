@@ -13,7 +13,7 @@ import settingIcon from '../../assets/settingIcon.svg';
 import userIcon from '../../assets/userIcon.svg';
 import testListIcon from '../../assets/testListIcon.svg';
 
-function TopNavbar() {
+function TopNavbar({ localDarkMode, setLocalDarkMode }) {
   const [isServerOnline, setIsServerOnline] = useState(true);
   const [showSettingModal, setShowSettingModal] = useState(false);
 
@@ -31,20 +31,20 @@ function TopNavbar() {
 
   return (
     <>
-      <Navbar expand="lg" className='bg-body-tertiary'>
-        <Container className={classes.container}>
+      <Navbar expand="lg" className={`${localDarkMode ? 'bg-dark navbar-dark' : 'bg-body-tertiary'} ${classes.navbar}`}>
+        <Container className={classes.navbar_container}>
           <Navbar.Brand href='/'>Litmus</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={classes.navbar_content}>
-              <Nav.Link className={classes.imgBox} href='/myTest'><img className={classes.icon} src={testListIcon} alt="Test List"/></Nav.Link>
-              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={boardIcon} alt="Board"/></Nav.Link>
-              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={helpIcon} alt="Help"/></Nav.Link>
-              <NavDropdown 
+              <Nav.Link className={classes.imgBox} href='/myTest'><img className={classes.icon} src={testListIcon} alt="Test List" /></Nav.Link>
+              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={boardIcon} alt="Board" /></Nav.Link>
+              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={helpIcon} alt="Help" /></Nav.Link>
+              <NavDropdown
                 id="basic-nav-dropdown"
-                title={<img className={classes.icon} src={userIcon} alt="User Info"/>} // SVG 아이콘으로 변경
-								className={classes.imgBox}
-							>
+                title={<img className={classes.icon} src={userIcon} alt="User Info" />}
+                className={classes.imgBox}
+              >
                 <NavDropdown.Item>마이페이지</NavDropdown.Item>
                 <NavDropdown.Item>내 제출</NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -52,7 +52,7 @@ function TopNavbar() {
                   로그아웃
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className={classes.imgBox} onClick={handleShowSettingModal}><img className={classes.icon} src={settingIcon} alt="Settings"/></Nav.Link>
+              <Nav.Link className={classes.imgBox} onClick={handleShowSettingModal}><img className={classes.icon} src={settingIcon} alt="Settings" /></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -61,7 +61,7 @@ function TopNavbar() {
           {isServerOnline ? <Badge bg="success">On</Badge> : <Badge bg="secondary">Off</Badge>}
         </Stack>
       </Navbar>
-      <SettingModal show={showSettingModal} handleClose={handleCloseSettingModal} />
+      <SettingModal show={showSettingModal} handleClose={handleCloseSettingModal} localDarkMode={localDarkMode} setLocalDarkMode={setLocalDarkMode} />
     </>
   );
 }

@@ -39,3 +39,13 @@
   background-color: #f8d7da !important; /* 빨간색 배경 */
   color: #721c24; /* 빨간색 글자 */
 }
+
+a {
+  text-decoration: underline;
+  color: inherit; /* 부모 요소의 색상을 상속받음 */
+}
+
+a:hover {
+  text-decoration: underline; /* 마우스를 올렸을 때도 밑줄을 유지 */
+}
+
