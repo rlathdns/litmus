@@ -71,14 +71,14 @@ function TestList() {
           <button
             className={localDarkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexDown}
-          >prev</button>
+          >이전 시험</button>
 
           <h2 className={localDarkMode ? classes.dark_title_content : classes.title_content}>{title}</h2>
 
           <button
             className={localDarkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexUp}
-          >next</button>
+          >예정 시험</button>
         </div>
         <Table bordered hover className={localDarkMode ? 'table-dark' : ''}>
           <thead className={localDarkMode ? classes.dark_table_head : classes.table_head}>

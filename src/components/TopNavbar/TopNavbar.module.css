@@ -1,5 +1,9 @@
-.navbar_content {
-  margin-right: 1vw;
+.brand{
+	margin-right: 5vw;
+}
+
+.imgBox{
+	min-width: 170px;
 }
 
 .navbar_container {
@@ -19,7 +23,7 @@
 .navbar_content .nav-link img {
   width: 1.5em;
   height: 1.5em;
-  transition: fill 0.3s; /* SVG fill 속성에 대한 전환 추가 */
+  transition: fill 0.3s, filter 0.3s; /* SVG fill 속성 및 필터에 대한 전환 추가 */
 }
 
 .navbar_content .nav-link:hover {

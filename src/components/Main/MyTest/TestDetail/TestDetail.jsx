@@ -156,13 +156,13 @@ const TestDetail = () => {
           </div>
           <div className="button-group">
             <button onClick={resetCode}>초기화
-              <div className="tooltip">코드를 초기화합니다.</div>
+              {/* <div className="tooltip">코드를 초기화합니다.</div> */}
             </button>
             <button onClick={runCode}>코드 실행
-              <div className="tooltip">코드를 실행합니다.</div>
+              {/* <div className="tooltip">코드를 실행합니다.</div> */}
             </button>
             <button className="submit-button" onClick={submitCode}>제출 후 채점하기
-              <div className="tooltip">코드를 제출하고 채점합니다.</div>
+              {/* <div className="tooltip">코드를 제출하고 채점합니다.</div> */}
             </button>
           </div>
         </div>
