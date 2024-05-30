@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import currentTestList from '../../../mocks/TestList/currentTestList';
 import futureTestList from '../../../mocks/TestList/futureTestList';
 import pastTestList from '../../../mocks/TestList/pastTestList';
 import classes from './TestList.module.css';
+import DarkModeContext from '../../../contexts/DarkModeContext'; // Context import
 
 function TestList() {
-  const globalDarkMode = useSelector((state) => state.darkMode.isDarkMode);
-  const [localDarkMode, setLocalDarkMode] = useState(globalDarkMode);
+  const { localDarkMode } = useContext(DarkModeContext); // Context에서 localDarkMode 가져오기
   const [tabIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
   const [title, setTitle] = useState('');
@@ -59,10 +59,6 @@ function TestList() {
         break;
     }
   }, [tabIndex]);
-
-  useEffect(() => {
-    setLocalDarkMode(globalDarkMode);
-  }, [globalDarkMode]);
 
   return (
     <section className={localDarkMode ? `${classes.wrapper} dark-mode` : classes.wrapper}>
