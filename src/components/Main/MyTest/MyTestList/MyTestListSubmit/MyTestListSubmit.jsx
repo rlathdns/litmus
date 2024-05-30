@@ -21,17 +21,17 @@ const MyTestSubmitList = () => {
 
   const testData = [
     { id: 'A', title: '괄호 판별하기', result: '성공', accuracy: '68.7%', status: '제출', details: [
-        { id: '1', category: '정답', source: 'Source', time: '2024-05-07 22:45:10' },
-        { id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:25:10' },
+        { id: '1', category: '성공', source: 'Source', time: '2024-05-07 22:45:10' },
+        { id: '2', category: '실패', source: 'Source', time: '2024-05-07 22:25:10' },
         { id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:15:10' },
       ] },
     { id: 'B', title: '피보나치 함수', result: '실패', accuracy: '58.7%', status: '제출', details: [
-        { id: '1', category: '오답', source: 'Source', time: '2024-05-07 22:43:10' },
-        { id: '2', category: '오답', source: 'Source', time: '2024-05-07 22:29:10' },
+        { id: '1', category: '실패', source: 'Source', time: '2024-05-07 22:43:10' },
+        { id: '2', category: '실패', source: 'Source', time: '2024-05-07 22:29:10' },
         { id: '3', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:21:10' },
-        { id: '4', category: '오답', source: 'Source', time: '2024-05-07 22:18:10' },
-        { id: '5', category: '오답', source: 'Source', time: '2024-05-07 22:15:10' },
-        { id: '6', category: '오답', source: 'Source', time: '2024-05-07 22:12:10' },
+        { id: '4', category: '실패', source: 'Source', time: '2024-05-07 22:18:10' },
+        { id: '5', category: '실패', source: 'Source', time: '2024-05-07 22:15:10' },
+        { id: '6', category: '실패', source: 'Source', time: '2024-05-07 22:12:10' },
         { id: '7', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:10:10' },
       ] },
     { id: 'C', title: '가장 큰 증가하는 부분 수열', result: '성공', accuracy: '44.179%', status: '제출', details: [
@@ -47,7 +47,7 @@ const MyTestSubmitList = () => {
           <th>문제번호</th>
           <th>제목</th>
           <th>결과</th>
-          <th>정답률</th>
+          <th>성공률</th>
           <th>현황</th>
         </tr>
       </thead>
@@ -84,9 +84,9 @@ const MyTestSubmitList = () => {
                       {test.details.length > 0 ? (
                         test.details.map(detail => (
                           <tr key={detail.id}>
-                            <td className={detail.category === '정답' ? classes.success : classes.fail}>{detail.category}</td>
-                            <td className={detail.category === '정답' ? classes.success : classes.fail}><a href='/'>{detail.source}</a></td>
-                            <td className={detail.category === '정답' ? classes.success : classes.fail}>{detail.time}</td>
+                            <td className={detail.category === '성공' ? classes.success : classes.fail}>{detail.category}</td>
+                            <td className={detail.category === '성공' ? classes.success : classes.fail}><a href='/'>{detail.source}</a></td>
+                            <td className={detail.category === '성공' ? classes.success : classes.fail}>{detail.time}</td>
                           </tr>
                         ))
                       ) : (
