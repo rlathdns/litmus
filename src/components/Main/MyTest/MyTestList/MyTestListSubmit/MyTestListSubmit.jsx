@@ -34,9 +34,9 @@ const MyTestSubmitList = () => {
         { id: '6', category: '오답', source: 'Source', time: '2024-05-07 22:12:10' },
         { id: '7', category: '컴파일에러', source: 'Source', time: '2024-05-07 22:10:10' },
       ] },
-    { id: 'C', title: '가장 큰 증가하는 부분 수열', result: '미제출', accuracy: '44.179%', status: '제출', details: [
-				{ id: '1', category: '정답', source: 'Source', time: '2024-05-30 23:10:10' },
-        { id: '2', category: '오답', source: 'Source', time: '2024-05-30 23:05:10' },
+    { id: 'C', title: '가장 큰 증가하는 부분 수열', result: '성공', accuracy: '44.179%', status: '제출', details: [
+				{ id: '1', category: '성공', source: 'Source', time: '2024-05-30 23:10:10' },
+        { id: '2', category: '실패', source: 'Source', time: '2024-05-30 23:05:10' },
 		] }
   ];
 
