@@ -35,3 +35,11 @@
 .closeIcon:hover{
 	background-color: #f2f4f6;
 }
+
+.correct{
+	color: #0D6EFD
+}
+
+.wrong{
+	color: #DC3545; /* 빨간색 글자 */;
+}
