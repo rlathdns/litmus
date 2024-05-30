@@ -17,9 +17,6 @@ function TopNavbar({ localDarkMode, setLocalDarkMode }) {
   const [isServerOnline, setIsServerOnline] = useState(true);
   const [showSettingModal, setShowSettingModal] = useState(false);
 
-  const toggleServer = () => {
-    setIsServerOnline(!isServerOnline);
-  };
 
   const handleShowSettingModal = () => {
     setShowSettingModal(true);

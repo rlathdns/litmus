@@ -1,12 +1,23 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './TestDetail.css';
+import ResultModal from '../../../Modal/ResultModal/ResultModal';
 
 const TestDetail = () => {
   const editorRef = useRef(null);
   const editorInstance = useRef(null);
 
+  const [showModal, setShowModal] = useState(false);
+  const [resultMessage, setResultMessage] = useState('');
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
-    // Ensure the elements are rendered before initializing Split.js
     if (document.querySelector('.left-panel') && document.querySelector('.right-panel')) {
       window.Split(['.left-panel', '.right-panel'], {
         sizes: [40, 60],
@@ -36,31 +47,33 @@ const TestDetail = () => {
       });
     }
 
-    editorInstance.current = window.CodeMirror.fromTextArea(editorRef.current, {
-      lineNumbers: true,
-      mode: 'python', // Default mode
-      theme: 'eclipse',
-      viewportMargin: Infinity // Ensures the editor fills its container
-    });
+    if (!editorInstance.current) {
+      editorInstance.current = window.CodeMirror.fromTextArea(editorRef.current, {
+        lineNumbers: true,
+        mode: 'python', // Default mode
+        theme: 'eclipse',
+        viewportMargin: Infinity // Ensures the editor fills its container
+      });
 
-    const languageSelector = document.getElementById('language');
-    const handleLanguageChange = () => {
-      const mode = languageSelector.value;
-      if (mode === 'python') {
-        editorInstance.current.setOption('mode', 'python');
-      } else if (mode === 'javascript') {
-        editorInstance.current.setOption('mode', 'javascript');
-      } else if (mode === 'cpp') {
-        editorInstance.current.setOption('mode', 'text/x-c++src');
-      } else if (mode === 'c') {
-        editorInstance.current.setOption('mode', 'text/x-csrc');
-      }
-    };
-    languageSelector.addEventListener('change', handleLanguageChange);
+      const languageSelector = document.getElementById('language');
+      const handleLanguageChange = () => {
+        const mode = languageSelector.value;
+        if (mode === 'python') {
+          editorInstance.current.setOption('mode', 'python');
+        } else if (mode === 'javascript') {
+          editorInstance.current.setOption('mode', 'javascript');
+        } else if (mode === 'cpp') {
+          editorInstance.current.setOption('mode', 'text/x-c++src');
+        } else if (mode === 'c') {
+          editorInstance.current.setOption('mode', 'text/x-csrc');
+        }
+      };
+      languageSelector.addEventListener('change', handleLanguageChange);
 
-    return () => {
-      languageSelector.removeEventListener('change', handleLanguageChange);
-    };
+      return () => {
+        languageSelector.removeEventListener('change', handleLanguageChange);
+      };
+    }
   }, []);
 
   const resetCode = () => {
@@ -69,17 +82,32 @@ const TestDetail = () => {
   };
 
   const runCode = () => {
-    document.getElementById('result-content').innerText = 
-      '테스트 1 〉성공\n\n' +
-      '테스트 결과 (~˘▾˘)~\n' +
-      '1개 중 1개 성공\n\n' +
-      '채점 결과\n' +
-      '합계: 100.0 / 100.0\n';
+    const code = editorInstance.current.getValue();
+    if (code.trim() === '1234') {
+      document.getElementById('result-content').innerText = 
+        '테스트 1 〉실패\n\n' +
+        '테스트 결과 (~˘▾˘)~\n' +
+        '1개 중 0개 성공\n\n' +
+        '채점 결과\n' +
+        '합계: 0.0 / 100.0\n';  
+    } else {
+      document.getElementById('result-content').innerText = 
+        '테스트 1 〉성공\n\n' +
+        '테스트 결과 (~˘▾˘)~\n' +
+        '1개 중 1개 성공\n\n' +
+        '채점 결과\n' +
+        '합계: 100.0 / 100.0\n';
+    }
   };
 
   const submitCode = () => {
     const code = editorInstance.current.getValue();
-    alert('틀렸습니다.\n');
+    if (code.trim() === '1234') {
+      setResultMessage('오답입니다');
+    } else {
+      setResultMessage('정답입니다');
+    }
+    handleShowModal();
     document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
   };
 
@@ -168,6 +196,7 @@ const TestDetail = () => {
           </div>
         </div>
       </div>
+      {showModal && <ResultModal result={resultMessage} onClose={handleCloseModal} show={showModal} />}
     </div>
   );
 };
