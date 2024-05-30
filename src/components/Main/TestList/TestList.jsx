@@ -6,14 +6,15 @@ import futureTestList from '../../../mocks/TestList/futureTestList';
 import pastTestList from '../../../mocks/TestList/pastTestList';
 import classes from './TestList.module.css';
 
-function TestList(){
+function TestList() {
+  const globalDarkMode = useSelector((state) => state.darkMode.isDarkMode);
+  const [localDarkMode, setLocalDarkMode] = useState(globalDarkMode);
   const [tabIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
   const [title, setTitle] = useState('');
-  const isDarkMode = useSelector((state) => state.darkMode.isDarkMode);
 
   const indexUp = () => {
-    if(tabIndex === 2){
+    if (tabIndex === 2) {
       setIndex(0);
       return;
     }
@@ -21,26 +22,26 @@ function TestList(){
   };
 
   const indexDown = () => {
-    if (tabIndex === 0){ 
+    if (tabIndex === 0) {
       setIndex(2);
       return;
     }
-    setIndex(tabIndex -1);
+    setIndex(tabIndex - 1);
   };
 
   const emphasizeTime = (currentItemIndex) => {
     if (currentItemIndex < 2) {
       return '';
     }
-  
+
     if (currentItemIndex === 2 || currentItemIndex === 3) {
       return `${classes.emphasize}`;
     }
-  
+
     if (currentItemIndex === 4) {
       return `${classes.more_emphasize}`;
     }
-  }
+  };
 
   useEffect(() => {
     switch (tabIndex) {
@@ -59,23 +60,27 @@ function TestList(){
     }
   }, [tabIndex]);
 
+  useEffect(() => {
+    setLocalDarkMode(globalDarkMode);
+  }, [globalDarkMode]);
+
   return (
-    <section className={isDarkMode ? classes.dark_mode : ''}>
+    <section className={localDarkMode ? `${classes.wrapper} dark-mode` : classes.wrapper}>
       <article className={classes.wrapper}>
-        <div className={classes.title}>
-          <button 
-            className={classes.title_button}
+        <div className={localDarkMode ? `${classes.dark_title}` : classes.title}>
+          <button
+            className={localDarkMode ? `${classes.dark_title_button}` : classes.title_button}
             onClick={indexDown}
           >prev</button>
 
-          <h2 className={classes.title_content}>{title}</h2>
+          <h2 className={localDarkMode ? `${classes.dark_title_content}` : classes.title_content}>{title}</h2>
 
-          <button 
-            className={classes.title_button}
+          <button
+            className={localDarkMode ? `${classes.dark_title_button}` : classes.title_button}
             onClick={indexUp}
           >next</button>
         </div>
-        <Table bordered hover>       
+        <Table bordered hover className={localDarkMode ? 'table-dark' : ''}>
           <thead className={classes.table_head}>
             <tr>
               <th>종료 시간</th>
@@ -84,7 +89,7 @@ function TestList(){
               <th>시험 코드</th>
             </tr>
           </thead>
-          
+
           <tbody className={classes.table_body}>
             {data.map((item, idx) => (
               <tr key={idx}>
@@ -98,7 +103,7 @@ function TestList(){
         </Table>
       </article>
     </section>
-  )
+  );
 }
 
 export default TestList;

@@ -1,4 +1,5 @@
-*{
+/* 기존 스타일 유지 */
+* {
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
@@ -16,3 +17,35 @@ body.dark-mode .modal-content {
 }
 
 /* 추가로 다크 모드에 필요한 스타일들을 여기에 추가하세요 */
+body.dark-mode .navbar {
+  background-color: #1c1c1c !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .nav-link {
+  color: #cccccc !important;
+}
+
+body.dark-mode .nav-link:hover {
+  color: #ffffff !important;
+}
+
+body.dark-mode .nav-link img {
+  filter: brightness(0) invert(1) !important;
+}
+
+body.dark-mode .nav-link:hover img {
+  filter: brightness(0) invert(1) !important;
+}
+
+body.dark-mode .badge-success {
+  background-color: #28a745 !important;
+}
+
+body.dark-mode .badge-secondary {
+  background-color: #6c757d !important;
+}
+
+body.dark-mode .navbar-brand {
+  color: #ffffff !important;
+}

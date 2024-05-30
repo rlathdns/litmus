@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDarkMode } from '../../../store/darkModeSlice'; // 경로를 맞춰주세요
+import { toggleDarkMode, setDarkMode } from '../../../store/darkModeSlice'; // 경로를 맞춰주세요
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form'; 
 import Button from 'react-bootstrap/Button';
@@ -21,7 +21,7 @@ function SettingModal({ show, handleClose }) {
 
   const handleApply = () => {
     if (localDarkMode !== isDarkMode) {
-      dispatch(toggleDarkMode());
+      dispatch(setDarkMode(localDarkMode));
     }
     handleClose();
   };
@@ -32,7 +32,16 @@ function SettingModal({ show, handleClose }) {
   };
 
   useEffect(() => {
-    // 다크 모드 변경 시 클래스 업데이트
+    // 로컬 다크 모드 상태가 변경될 때 UI 업데이트
+    if (localDarkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }, [localDarkMode]);
+
+  useEffect(() => {
+    // 실제 다크 모드 상태 변경 시 클래스 업데이트
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
@@ -45,7 +54,7 @@ function SettingModal({ show, handleClose }) {
       <Modal show={show} onHide={handleModalClose} centered>
         <Modal.Header className={classes.header}>
           <Modal.Title>설정</Modal.Title>
-          <img onClick={handleModalClose} className={classes.closeIcon} src={closeIcon}/>
+          <img onClick={handleModalClose} className={classes.closeIcon} src={closeIcon} alt="close"/>
         </Modal.Header>
         <Modal.Body className={classes.modal_body}>
           <Form>

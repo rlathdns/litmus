@@ -1,9 +1,8 @@
-
-.wrapper{
+.wrapper {
   padding: 60px;
 }
 
-.title{
+.title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,33 +10,82 @@
   background-color: #f0f0f0;
 }
 
-.title_content{
+.title_content {
   margin: 0;
 }
 
-.title_button{
+.title_button {
   background-color: transparent;
   border: 2px solid #191919;
   margin: 0 20px;
 }
 
-.title_button:hover{
+.title_button:hover {
   border: 2px solid #0D6EFD;
 }
 
-
-.table_head{
+.table_head {
   text-align: center;
 }
 
-.table_body{
+.table_body {
   text-align: center;
 }
 
-.emphasize{
+.emphasize {
   color: #E67BA4;
 }
 
-.more_emphasize{
+.more_emphasize {
   color: #CF2F11;
+}
+
+/* 다크 모드 스타일 추가 */
+body.dark-mode .wrapper {
+  background-color: #1e1e1e;
+}
+
+.dark_title {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #212529;
+  color: #ffffff;
+}
+
+.dark_title_content {
+	margin: 0;
+  color: #ffffff;
+}
+
+.dark_title_button {
+	background-color: #212529;
+  border: 2px solid #191919;
+  margin: 0 20px;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+body.dark-mode .title_button:hover {
+  border: 2px solid #0D6EFD;
+}
+
+body.dark-mode .table {
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+body.dark-mode .table_head {
+  background-color: #3c3c3c;
+  color: #ffffff;
+}
+
+body.dark-mode .table_body {
+  background-color: #2c2c2c;
+  color: #ffffff;
+}
+
+body.dark-mode .table_body tr:hover {
+  background-color: #3c3c3c;
 }
