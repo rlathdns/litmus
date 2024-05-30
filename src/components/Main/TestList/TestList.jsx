@@ -90,7 +90,7 @@ function TestList(){
               <tr key={idx}>
                 <td><span className={tabIndex === 0 ? emphasizeTime(idx) : ''}>{item.time}</span></td>
                 <td>{item.professor}</td>
-                <td>{item.problem}</td>
+                <td><a href='/myTest'>{item.problem}</a></td>
                 <td>{item.testCode}</td>
               </tr>
             ))}

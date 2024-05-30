@@ -7,6 +7,11 @@ import Badge from 'react-bootstrap/Badge';
 import Stack from 'react-bootstrap/Stack';
 import SettingModal from '../Modal/SettingModal/SettingModal';
 import classes from './TopNavbar.module.css';
+import boardIcon from '../../assets/boardIcon.svg';
+import helpIcon from '../../assets/helpIcon.svg';
+import settingIcon from '../../assets/settingIcon.svg';
+import userIcon from '../../assets/userIcon.svg';
+import testListIcon from '../../assets/testListIcon.svg';
 
 function TopNavbar() {
   const [isServerOnline, setIsServerOnline] = useState(true);
@@ -32,10 +37,14 @@ function TopNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className={classes.navbar_content}>
-              <Nav.Link href='/myTest'>시험목록</Nav.Link>
-              <Nav.Link>게시판</Nav.Link>
-              <Nav.Link>도움말</Nav.Link>
-              <NavDropdown title="내 정보" id="basic-nav-dropdown">
+              <Nav.Link className={classes.imgBox} href='/myTest'><img className={classes.icon} src={testListIcon} alt="Test List"/></Nav.Link>
+              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={boardIcon} alt="Board"/></Nav.Link>
+              <Nav.Link className={classes.imgBox}><img className={classes.icon} src={helpIcon} alt="Help"/></Nav.Link>
+              <NavDropdown 
+                id="basic-nav-dropdown"
+                title={<img className={classes.icon} src={userIcon} alt="User Info"/>} // SVG 아이콘으로 변경
+								className={classes.imgBox}
+							>
                 <NavDropdown.Item>마이페이지</NavDropdown.Item>
                 <NavDropdown.Item>내 제출</NavDropdown.Item>
                 <NavDropdown.Divider />
@@ -43,7 +52,7 @@ function TopNavbar() {
                   로그아웃
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link onClick={handleShowSettingModal}>설정</Nav.Link>
+              <Nav.Link className={classes.imgBox} onClick={handleShowSettingModal}><img className={classes.icon} src={settingIcon} alt="Settings"/></Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
