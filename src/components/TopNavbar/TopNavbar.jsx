@@ -65,7 +65,7 @@ function TopNavbar({ localDarkMode, setLocalDarkMode }) {
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <Stack direction="horizontal" gap={2} onClick={toggleServer}>
+        <Stack direction="horizontal" gap={2}>
           <span>Server Status : </span>
           {isServerOnline ? <Badge bg="success">On</Badge> : <Badge bg="secondary">Off</Badge>}
         </Stack>
