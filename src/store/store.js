@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import darkModeReducer from './darkModeSlice';
 import neverSeeReducer from './neverSeeSlice';
+import testCodeReducer from './testCodeSlice';
 
 const persistConfig = {
   key: 'root',
@@ -12,6 +13,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   darkMode: darkModeReducer,
   neverSee: neverSeeReducer,
+  testCode : testCodeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
