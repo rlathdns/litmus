@@ -13,7 +13,7 @@ import settingIcon from '../../assets/settingIcon.svg';
 import userIcon from '../../assets/userIcon.svg';
 import testListIcon from '../../assets/testListIcon.svg';
 
-function TopNavbar({ localDarkMode, setLocalDarkMode }) {
+function TopNavbar({ globalDarkMode }) {
   const [isServerOnline, setIsServerOnline] = useState(true);
   const [showSettingModal, setShowSettingModal] = useState(false);
 
@@ -28,7 +28,7 @@ function TopNavbar({ localDarkMode, setLocalDarkMode }) {
 
   return (
     <>
-      <Navbar expand="lg" className={`${localDarkMode ? 'bg-dark navbar-dark' : 'bg-body-tertiary'} ${classes.navbar}`}>
+      <Navbar expand="lg" className={`${globalDarkMode ? 'bg-dark navbar-dark' : 'bg-body-tertiary'} ${classes.navbar}`}>
         <Container className={classes.navbar_container}>
           <Navbar.Brand className={classes.brand} href='/'>Litmus</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -70,7 +70,7 @@ function TopNavbar({ localDarkMode, setLocalDarkMode }) {
           {isServerOnline ? <Badge bg="success">On</Badge> : <Badge bg="secondary">Off</Badge>}
         </Stack>
       </Navbar>
-      <SettingModal show={showSettingModal} handleClose={handleCloseSettingModal} localDarkMode={localDarkMode} setLocalDarkMode={setLocalDarkMode} />
+      <SettingModal show={showSettingModal} handleClose={handleCloseSettingModal} globalDarkMode={globalDarkMode} />
     </>
   );
 }

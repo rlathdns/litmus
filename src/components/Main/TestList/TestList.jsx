@@ -1,17 +1,20 @@
 import { useSelector } from 'react-redux';
 import Table from 'react-bootstrap/Table';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, } from 'react';
 import currentTestList from '../../../mocks/TestList/currentTestList';
 import futureTestList from '../../../mocks/TestList/futureTestList';
 import pastTestList from '../../../mocks/TestList/pastTestList';
 import classes from './TestList.module.css';
-import DarkModeContext from '../../../contexts/DarkModeContext'; // Context import
 
 function TestList() {
-  const { localDarkMode } = useContext(DarkModeContext); // Context에서 localDarkMode 가져오기
+ 
+  const darkMode = useSelector(state => state.darkMode.isDarkMode);
+
   const [tabIndex, setIndex] = useState(0);
   const [data, setData] = useState([]);
   const [title, setTitle] = useState('');
+
+  console.log(darkMode);
 
   const indexUp = () => {
     if (tabIndex === 2) {
@@ -61,23 +64,23 @@ function TestList() {
   }, [tabIndex]);
 
   return (
-    <section className={localDarkMode ? `${classes.wrapper} dark-mode` : classes.wrapper}>
+    <section className={darkMode ? `${classes.wrapper} dark-mode` : classes.wrapper}>
       <article className={classes.wrapper}>
-        <div className={localDarkMode ? classes.dark_title : classes.title}>
+        <div className={darkMode ? classes.dark_title : classes.title}>
           <button
-            className={localDarkMode ? classes.dark_title_button : classes.title_button}
+            className={darkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexDown}
           >이전 시험</button>
 
-          <h2 className={localDarkMode ? classes.dark_title_content : classes.title_content}>{title}</h2>
+          <h2 className={darkMode ? classes.dark_title_content : classes.title_content}>{title}</h2>
 
           <button
-            className={localDarkMode ? classes.dark_title_button : classes.title_button}
+            className={darkMode ? classes.dark_title_button : classes.title_button}
             onClick={indexUp}
           >예정 시험</button>
         </div>
-        <Table bordered hover className={localDarkMode ? 'table-dark' : ''}>
-          <thead className={localDarkMode ? classes.dark_table_head : classes.table_head}>
+        <Table bordered hover className={darkMode ? 'table-dark' : ''}>
+          <thead className={darkMode ? classes.dark_table_head : classes.table_head}>
             <tr>
               <th>종료 시간</th>
               <th>교수님</th>
@@ -86,7 +89,7 @@ function TestList() {
             </tr>
           </thead>
 
-          <tbody className={localDarkMode ? classes.dark_table_body : classes.table_body}>
+          <tbody className={darkMode ? classes.dark_table_body : classes.table_body}>
             {data.map((item, idx) => (
               <tr key={idx}>
                 <td><span className={tabIndex === 0 ? emphasizeTime(idx) : ''}>{item.time}</span></td>

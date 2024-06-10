@@ -4,26 +4,20 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import TopNavbar from '../components/TopNavbar/TopNavbar';
 import classes from './MainLayout.module.css';
-import DarkModeContext from '../contexts/DarkModeContext'; // Context import
 
 function MainLayout() {
   const globalDarkMode = useSelector(state => state.darkMode.isDarkMode);
-  const [localDarkMode, setLocalDarkMode] = useState(globalDarkMode);
 
-  useEffect(() => {
-    setLocalDarkMode(globalDarkMode);
-  }, [globalDarkMode]);
 
-  console.log('mainlayout : ', localDarkMode);
 
   return (
-    <DarkModeContext.Provider value={{ localDarkMode, setLocalDarkMode }}>
-      <TopNavbar localDarkMode={localDarkMode} setLocalDarkMode={setLocalDarkMode} />
-      <main className={localDarkMode ? `${classes.content} dark-mode` : classes.content}>
+    <>
+      <TopNavbar globalDarkMode={globalDarkMode} />
+      <main className={globalDarkMode ? `${classes.content} dark-mode` : classes.content}>
         <Outlet />
       </main>
       {/* <Footer/> */}
-    </DarkModeContext.Provider>
+    </>
   );
 }
 
