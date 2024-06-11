@@ -98,19 +98,21 @@ const TestDetail = () => {
   const runCode = () => {
     const code = editorInstance.current.getValue();
     if (code.trim() !== '1234') {
-      document.getElementById('result-content').innerText = 
-        '테스트 1 〉실패\n\n' +
-        '테스트 결과 (~˘▾˘)~\n' +
-        '1개 중 0개 성공\n\n' +
-        '채점 결과\n' +
-        '합계: 0.0 / 100.0\n';  
+      document.getElementById('result-content').innerHTML = 
+        '테스트 1 〉<span style="color: #DC3545;;">실패</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 0개 성공<br><br>' +
+        '채점 결과<br>' +
+        '합계: 0.0 / 100.0<br>';
     } else {
-      document.getElementById('result-content').innerText = 
-        '테스트 1 〉성공\n\n' +
-        '테스트 결과 (~˘▾˘)~\n' +
-        '1개 중 1개 성공\n\n' +
-        '채점 결과\n' +
-        '합계: 100.0 / 100.0\n';
+      document.getElementById('result-content').innerHTML = 
+        '테스트 1 〉<span style="color: #0D6EFD;">성공</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 1개 성공<br><br>' +
+        '채점 결과<br>' +
+        '합계: 100.0 / 100.0<br>'+
+				'<span style="font-weight: 700">제출 후 채점하기를 눌러 답을 꼭 제출해주세요!</span>'
+
     }
   };
 
@@ -223,9 +225,18 @@ const TestDetail = () => {
             </div>
           </div>
           <div className="button-group">
-            <button onClick={resetCode}>초기화</button>
-            <button onClick={runCode}>코드 실행</button>
-            <button className="submit-button" onClick={submitCode}>제출 후 채점하기</button>
+            <button onClick={resetCode}>
+							초기화
+							<div className="tooltip">모든 코드와 실행 결과를<br/>초기 상태로 되돌립니다.</div>
+						</button>
+            <button onClick={runCode}>
+							코드 실행
+							<div className="tooltip">코드를 테스트하고<br/>실행 결과를 봅니다.</div>
+						</button>
+            <button className="submit-button" onClick={submitCode}>
+							제출 후 채점하기
+							<div className="tooltip">코드를 제출하고<br/>채점 결과를 받습니다.</div>
+						</button>
           </div>
         </div>
       </div>

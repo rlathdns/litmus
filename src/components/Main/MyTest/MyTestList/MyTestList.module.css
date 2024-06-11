@@ -17,6 +17,7 @@
   background: none;
   font-size: 16px;
   cursor: pointer;
+	position: relative; /* Tooltip을 버튼에 상대적으로 위치시키기 위해 필요합니다 */
 }
 
 .toggleButton:focus {
@@ -58,4 +59,27 @@ a:hover {
 
 .table a:hover {
   text-decoration: underline !important; /* 마우스를 올렸을 때도 밑줄을 유지 */
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 99999;
+}
+
+.toggleButton:hover .tooltip {
+  display: block;
 }

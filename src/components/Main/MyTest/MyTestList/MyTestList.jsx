@@ -6,6 +6,8 @@ import downArrow from '../../../../assets/down_arrow.svg';
 import classes from './MyTestList.module.css';
 import { TestContext } from '../../../../contexts/TestContext';
 
+import downArrow2 from '../../../../assets/down_arrow2.png';
+
 const MyTestList = () => {
   const { testData, setTestData } = useContext(TestContext);
   const [expandedRows, setExpandedRows] = useState([]);
@@ -18,7 +20,7 @@ const MyTestList = () => {
     }
   };
 
-	console.log(testData);
+  console.log(testData);
 
   return (
     <Table bordered className={classes.table} style={{ borderWidth: '2px' }}>
@@ -45,7 +47,19 @@ const MyTestList = () => {
                   onClick={() => toggleRow(index)}
                   className={classes.toggleButton}
                 >
-                  {expandedRows.includes(index) ? <img src={upArrow}/> : <img src={downArrow}/>}
+                  {expandedRows.includes(index) ? (
+										<>
+											<img className={classes.rotated} src={downArrow2} />
+											<span className={classes.tooltip}>제출목록을 숨깁니다.</span>
+										</>
+                    
+                  ) : (
+										<>
+											<img src={downArrow2} />
+											<span className={classes.tooltip}>제출목록을 펼칩니다.</span>
+										</>
+                    
+                  )}
                 </Button>
               </td>
             </tr>
