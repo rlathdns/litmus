@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 import MyTestPage from './pages/MyTestPage';
 import TestSolvingPage from './pages/TestSolvingPage';
 import MyTestSubmitPage from './pages/MyTestPageSubmit';
-
+import { TestProvider } from './contexts/TestContext';
 
 const router = createBrowserRouter([
 	{
@@ -41,9 +41,9 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+		<TestProvider>
+			<RouterProvider router={router} />
+		</TestProvider>
   )
 }
 

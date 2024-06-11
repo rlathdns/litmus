@@ -1,13 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import './TestDetail.css';
 import ResultModal from '../../../Modal/ResultModal/ResultModal';
+import { TestContext } from '../../../../contexts/TestContext';
+import { useNavigate } from 'react-router-dom';
+
+const formatDate = (date) => {
+  const year = date.getFullYear();
+  const month = ('0' + (date.getMonth() + 1)).slice(-2);
+  const day = ('0' + date.getDate()).slice(-2);
+  const hours = ('0' + date.getHours()).slice(-2);
+  const minutes = ('0' + date.getMinutes()).slice(-2);
+  const seconds = ('0' + date.getSeconds()).slice(-2);
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+};
 
 const TestDetail = () => {
   const editorRef = useRef(null);
   const editorInstance = useRef(null);
 
+	const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [resultMessage, setResultMessage] = useState('');
+  const { testData, setTestData } = useContext(TestContext);
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -83,7 +97,7 @@ const TestDetail = () => {
 
   const runCode = () => {
     const code = editorInstance.current.getValue();
-    if (code.trim() === '1234') {
+    if (code.trim() !== '1234') {
       document.getElementById('result-content').innerText = 
         '테스트 1 〉실패\n\n' +
         '테스트 결과 (~˘▾˘)~\n' +
@@ -101,18 +115,37 @@ const TestDetail = () => {
   };
 
   const submitCode = () => {
-    const code = editorInstance.current.getValue();
-    if (code.trim() === '1234') {
-      setResultMessage('오답입니다');
-    } else {
-      setResultMessage('정답입니다');
-    }
-    handleShowModal();
-    document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
-  };
+		const code = editorInstance.current.getValue();
+		const newDetail = {
+			id: new Date().getTime().toString(),
+			category: code.trim() === '1234' ? '정답' : '오답',
+			source: 'Source',
+			time: formatDate(new Date()),
+		};
+	
+		setTestData(prevTestData => prevTestData.map(test => {
+			if (test.id === 'C') {
+				return {
+					...test,
+					result: code.trim() === '1234' ? '성공' : test.result, // 여기서 result를 업데이트합니다.
+					details: [newDetail, ...test.details], // 새로운 항목을 맨 앞에 추가합니다.
+				};
+			}
+			return test;
+		}));
+	
+		if (code.trim() === '1234') {
+			setResultMessage('정답입니다.');
+		} else {
+			setResultMessage('오답입니다.');
+		}
+		handleShowModal();
+		document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
+	};
+	
 
   const goBack = () => {
-    window.history.back();
+    navigate('/myTest');
   };
 
   return (
