@@ -135,9 +135,9 @@ const TestDetail = () => {
 		}));
 	
 		if (code.trim() === '1234') {
-			setResultMessage('정답입니다.');
+			setResultMessage('정답입니다');
 		} else {
-			setResultMessage('오답입니다.');
+			setResultMessage('오답입니다');
 		}
 		handleShowModal();
 		document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
