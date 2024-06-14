@@ -231,7 +231,7 @@ const TestDetail = () => {
 						</button>
             <button onClick={runCode}>
 							코드 실행
-							<div className="tooltip">코드를 테스트하고<br/>실행 결과를 봅니다.</div>
+							<div className="tooltip">작성한 코드를 제출하기 전에<br/>먼저 실행해 볼 수 있습니다.</div>
 						</button>
             <button className="submit-button" onClick={submitCode}>
 							제출 후 채점하기
