@@ -3,7 +3,6 @@ import './TestDetail.css';
 import ResultModal from '../../../Modal/ResultModal/ResultModal';
 import { TestContext } from '../../../../contexts/TestContext';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../../Loading/Loading';
 
 const formatDate = (date) => {
   const year = date.getFullYear();
@@ -23,8 +22,6 @@ const TestDetail = () => {
   const [showModal, setShowModal] = useState(false);
   const [resultMessage, setResultMessage] = useState('');
   const { testData, setTestData } = useContext(TestContext);
-	const [loading, setLoading] = useState(false);
-	const [resultContent, setResultContent] = useState('실행 결과가 여기에 표시됩니다.');
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -99,31 +96,25 @@ const TestDetail = () => {
   };
 
   const runCode = () => {
-		setLoading(true);
-		setTimeout(() => {
-			const code = editorInstance.current.getValue();
-			if (code.trim() !== '1234') {
-				setResultContent(`
-					테스트 1 〉<span style="color: #DC3545;">실패</span><br><br>
-					테스트 결과 (~˘▾˘)~<br>
-					1개 중 0개 성공<br><br>
-					채점 결과<br>
-					합계: 0.0 / 100.0<br>
-				`);
-			} else {
-				setResultContent(`
-					테스트 1 〉<span style="color: #0D6EFD;">성공</span><br><br>
-					테스트 결과 (~˘▾˘)~<br>
-					1개 중 1개 성공<br><br>
-					채점 결과<br>
-					합계: 100.0 / 100.0<br>
-					<span style="font-weight: 700">제출 후 채점하기를 눌러 답을 꼭 제출해주세요!</span>
-				`);
-			}
-			setLoading(false);
-		}, 1000);
-	};
-	
+    const code = editorInstance.current.getValue();
+    if (code.trim() !== '1234') {
+      document.getElementById('result-content').innerHTML = 
+        '테스트 1 〉<span style="color: #DC3545;;">실패</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 0개 성공<br><br>' +
+        '채점 결과<br>' +
+        '합계: 0.0 / 100.0<br>';
+    } else {
+      document.getElementById('result-content').innerHTML = 
+        '테스트 1 〉<span style="color: #0D6EFD;">성공</span><br><br>' +
+        '테스트 결과 (~˘▾˘)~<br>' +
+        '1개 중 1개 성공<br><br>' +
+        '채점 결과<br>' +
+        '합계: 100.0 / 100.0<br>'+
+				'<span style="font-weight: 700">제출 후 채점하기를 눌러 답을 꼭 제출해주세요!</span>'
+
+    }
+  };
 
   const submitCode = () => {
 		const code = editorInstance.current.getValue();
@@ -150,8 +141,8 @@ const TestDetail = () => {
 		} else {
 			setResultMessage('오답입니다');
 		}
-		setResultContent('코드가 채점되었습니다...');
 		handleShowModal();
+		document.getElementById('result-content').innerText = '코드가 채점되었습니다...';
 	};
 	
 
@@ -228,11 +219,11 @@ const TestDetail = () => {
             <textarea id="codeEditor" ref={editorRef} className="editor"></textarea>
           </div>
           <div className="result-panel">
-						<div className="panel-title">실행 결과</div>
-						<div id="result-content">
-							{loading ? <Loading /> : <div dangerouslySetInnerHTML={{ __html: resultContent }} />}
-						</div>
-					</div>
+            <div className="panel-title">실행 결과</div>
+            <div id="result-content">
+              실행 결과가 여기에 표시됩니다.
+            </div>
+          </div>
           <div className="button-group">
             <button onClick={resetCode}>
 							초기화
